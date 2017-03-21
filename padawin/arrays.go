@@ -55,7 +55,7 @@ func main() {
             break
         } else {
             fmt.Println("Alas as I thoughteth, you did not pay enough attention...")
-            fmt.Println("The magical perl was in the bucket ", perlNewPlace)
+            fmt.Println("The magical perl was in the bucket ", (perlNewPlace + 1))
             fmt.Println("Please cometh back later and test your luck again!")
             break
         }

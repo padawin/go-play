@@ -1,6 +1,6 @@
 package main
 
-import ("fmt"; "bufio"; "os"; "strings"; "time")
+import ("fmt"; "bufio"; "os"; "strings")
 
 func main() {
     fmt.Println("At each turn, type a letter or a character to execute an action")

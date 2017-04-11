@@ -1,9 +1,9 @@
 package main
 
 import ("fmt"; "time"; "bufio"; "math/rand"; "os"; "strconv"; "strings")
+const nbBuckets = 5
 
 func main() {
-    const nbBuckets = 5
     var buckets[nbBuckets]int
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)

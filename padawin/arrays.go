@@ -4,12 +4,10 @@ import ("fmt"; "time"; "bufio"; "math/rand"; "os"; "strconv"; "strings")
 const nbBuckets = 5
 
 func main() {
-    var buckets[nbBuckets]int
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
 	reader := bufio.NewReader(os.Stdin)
     var chosenBucket int = r1.Intn(nbBuckets)
-    buckets[chosenBucket] = 1
     fmt.Println("Oye Oye brave people! Cometh and dare face me, the Great Nerlim!")
     fmt.Println("Thou can see in front of me five magical buckets and a magical perl")
     fmt.Println("I shalt put the perl in one of the bucket and,")
@@ -32,8 +30,6 @@ func main() {
     }
 
     var perlNewPlace = r1.Intn(nbBuckets)
-    buckets[chosenBucket] = 0
-    buckets[perlNewPlace] = 1
 
     fmt.Println("")
     fmt.Println("And now is your turn, art thou the falcon of our age, the mosteth")
@@ -50,7 +46,7 @@ func main() {
             fmt.Println("Are you trying to choose a bucket on the stall of my")
             fmt.Println("respected (but still obviously inferior) colleague")
             fmt.Println("the (not so) mightest Fandalg?")
-        } else if buckets[textI] == 1 {
+        } else if textI == perlNewPlace {
             fmt.Println("By the seven trolls' beard! You found indeed!")
             break
         } else {

@@ -4,10 +4,22 @@ import ("fmt"; "time"; "bufio"; "math/rand"; "os"; "strconv"; "strings")
 const nbBuckets = 5
 
 func main() {
-	s1 := rand.NewSource(time.Now().UnixNano())
-	r1 := rand.New(s1)
-	reader := bufio.NewReader(os.Stdin)
-    var chosenBucket int = r1.Intn(nbBuckets)
+    s1 := rand.NewSource(time.Now().UnixNano())
+    r1 := rand.New(s1)
+    introduction()
+    mixBuckets(r1)
+    var perlNewPlace int = cheat(r1)
+
+    play(perlNewPlace)
+}
+
+func readString() string {
+    reader := bufio.NewReader(os.Stdin)
+    str, _ := reader.ReadString('\n')
+    return str
+}
+
+func introduction() {
     fmt.Println("Oye Oye brave people! Cometh and dare face me, the Great Nerlim!")
     fmt.Println("Thou can see in front of me five magical buckets and a magical perl")
     fmt.Println("I shalt put the perl in one of the bucket and,")
@@ -15,7 +27,11 @@ func main() {
     fmt.Println("the most attentive of you!")
     fmt.Println("")
     fmt.Println("Pay Attention! (press return to continue)")
-    reader.ReadString('\n')
+    readString()
+}
+
+func mixBuckets(r1 *rand.Rand) {
+    var chosenBucket int = r1.Intn(nbBuckets)
     fmt.Println("")
     fmt.Println("I put the perl in the bucket ", chosenBucket)
     fmt.Println("Annnd....")
@@ -28,9 +44,13 @@ func main() {
         var b2 int = r1.Intn(nbBuckets)
         fmt.Println("I swappeth the bucket ", (b1 + 1), " and the bucket ", (b2 + 1))
     }
+}
 
-    var perlNewPlace = r1.Intn(nbBuckets)
+func cheat(r1 *rand.Rand) int {
+    return r1.Intn(nbBuckets)
+}
 
+func play(perlNewPlace int) {
     fmt.Println("")
     fmt.Println("And now is your turn, art thou the falcon of our age, the mosteth")
     fmt.Println("attentive person in the crowd?")
@@ -39,7 +59,7 @@ func main() {
     fmt.Println("the mightiest magical perl?")
     fmt.Print("Your choice: ")
 
-    text, _ := reader.ReadString('\n')
+    var text string = readString()
     textI, _ := strconv.Atoi(strings.TrimSpace(text))
     for {
         if textI < 1 || textI > nbBuckets {
